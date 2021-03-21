@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "UserClient";
+
+package user;
+
+service UserManager{
+	rpc AddUser(AddUserRequest) returns (AddUserResponse);
+}
+
+message AddUserRequest{
+	User user = 1;
+}
+
+message AddUserResponse{
+	Status status = 1;
+	string name = 2;
+	string gender = 3;
+	int32 age = 4;
+
+	enum Status{
+		SUCCESS = 0;
+		ERROR = 1;
+	}
+}
+
+message User{
+	string name = 1;
+	string CNP = 2;
+}
